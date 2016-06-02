@@ -19,7 +19,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
             }],
         execute: function() {
             // селектор исп-ся для вызова DOM в index.html
-            // Компонент исп-ся для хранения html разметки
+            // Компонент декоратор исп-ся для хранения html разметки
             AppComponent = (function () {
                 function AppComponent() {
                     this.pageTitle = 'Acme Product Managment';

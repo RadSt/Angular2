@@ -1,6 +1,6 @@
 import {Component} from 'angular2/core';
 // селектор исп-ся для вызова DOM в index.html
-// Компонент исп-ся для хранения html разметки
+// Компонент декоратор исп-ся для хранения html разметки
 @Component({
    selector: 'pm-app',
    template: `<div><h1>{{pageTitle}}</h1>
