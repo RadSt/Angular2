@@ -8,7 +8,14 @@ import { Component } from 'angular2/core';
 
 export class ProductListComponent{
     // связь с переменной в product-list.component.html
-   pageTitle: string ='Product List';
+   pageTitle: string = 'Product List';
+   // переменные свойств сss элемента
+   imageWidth: number = 50;
+   imageMargin: number = 2;
+   // Переменная для кнопки Show Image false-hidden first
+   showImage: boolean = false;
+   // Параметр (two-way) binding для фильтрации
+   listFilter: string = 'cart';
    // Array dynamic with products
    products: any[] = [
     {
@@ -62,4 +69,8 @@ export class ProductListComponent{
         "imageUrl": "http://openclipart.org/image/300px/svg_to_png/120337/xbox-controller_01.png"
     }
 ]; 
+// Метод для скрытия показа image тип void
+  toggleImage(): void{
+      this.showImage = !this.showImage;
+  }
 }

@@ -22,6 +22,13 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 function ProductListComponent() {
                     // связь с переменной в product-list.component.html
                     this.pageTitle = 'Product List';
+                    // переменные свойств сss элемента
+                    this.imageWidth = 50;
+                    this.imageMargin = 2;
+                    // Переменная для кнопки Show Image false-hidden first
+                    this.showImage = false;
+                    // Параметр (two-way) binding для фильтрации
+                    this.listFilter = 'cart';
                     // Array dynamic with products
                     this.products = [
                         {
@@ -76,6 +83,10 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                         }
                     ];
                 }
+                // Метод для скрытия показа image тип void
+                ProductListComponent.prototype.toggleImage = function () {
+                    this.showImage = !this.showImage;
+                };
                 ProductListComponent = __decorate([
                     core_1.Component({
                         selector: 'pm-products',

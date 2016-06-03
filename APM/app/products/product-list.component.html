@@ -1,18 +1,20 @@
 <div class="panel panel-primary">
     <div class="panel-heading">
-      <!--Интерполированная (one-way) связь с переменной из компонента product-list--> 
+      <!--{{}}Интерполированная (one-way) связь с переменной из компонента product-list--> 
         {{pageTitle}}
     </div>
     <div class="panel-body">
         <div class="row">
             <div class="col-md-2">Filter by: </div>
             <div class="col-md-4">
-                <input type="text"/>
+                <!--[(ngModel)] = "параметр" (two-way) binding для фильтрации --> 
+                <input type="text"
+                [(ngModel)] = "listFilter"/>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
-                <h3>Filtered by: </h3>
+                <h3>Filtered by:{{ listFilter }} </h3>
             </div>
         </div>
         <div class="table-responsive">
@@ -21,8 +23,11 @@
                 <thead>
                 <tr>
                     <th>
-                        <button class="btn btn-primary">
-                            Show Image
+                        <!-- ()="Метотод()" Event Binding для биндинга событий элемента-->
+                        <button class="btn btn-primary" (click)="toggleImage()">
+                            <!--{{showImage ? "Hide" : "Show"}} Текст кнопки в зависимости
+                            от значения переменной-->
+                            {{showImage ? "Hide" : "Show"}} Image
                         </button>
                     </th>
                     <th>Product</th>
@@ -35,11 +40,20 @@
                 <tbody> 
                     <!--*ngFor="" цикл для типа products с помощью лок. перем. #product--> 
                     <tr *ngFor="#product of products">
-                        <td></td>
+                        <td>
+                             <!--[]="переменная со знач." Binding для свойств сss элемента--> 
+                             <!--*ngIf="showImage" используется для отображения или скрытия элементов-->
+                            <img *ngIf="showImage"
+                            [src]="product.imageUrl" [title]="product.productName"
+                            [style.width.px]="imageWidth" [style.margin.px]="imageMargin">
+                        </td>
                         <td>{{ product.productName }}</td>
-                        <td>{{ product.productCode }}</td>
+                        <!--|lowercase Исп-ие pipes для задания формата значения--> 
+                        <td>{{ product.productCode | lowercase }}</td>
                         <td>{{ product.releaseDate }}</td>
-                        <td>{{ product.price }}</td>
+                         <!--|currency Исп-ие pipes для задания денежного формата значения
+                         'RUS':true:'1.2-2' формат значения--> 
+                        <td>{{ product.price | currency: 'RUS':true:'1.2-2' }}</td>
                         <td>{{ product.starRating }}</td>
                     </tr>                 
                 </tbody>
