@@ -3,6 +3,7 @@ import { Component } from 'angular2/core';
 @Component({
     selector: 'pm-products',
     templateUrl: 'app/products/product-list.component.html'
+    // Разметка html в файле, если обьем большой
 })
 
 export class ProductListComponent{

@@ -23,9 +23,9 @@ System.register(['angular2/core', './products/product-list.component'], function
         execute: function() {
             // селектор исп-ся для вызова DOM в index.html
             // Компонент декоратор исп-ся для хранения html разметки
-            // `разметка` когда нужен кусок html 
+            // `разметка` когда нужен небольшой кусок html 
             // "разметка" для строки html
-            // ИСпользование компонента продукт лист в ап компоненте 
+            // Иcпользование компонента продукт лист в ап компоненте как директива
             AppComponent = (function () {
                 function AppComponent() {
                     this.pageTitle = 'Acme Product Managment';
