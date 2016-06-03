@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', './products/product-list.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,16 +10,22 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, product_list_component_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (product_list_component_1_1) {
+                product_list_component_1 = product_list_component_1_1;
             }],
         execute: function() {
             // селектор исп-ся для вызова DOM в index.html
             // Компонент декоратор исп-ся для хранения html разметки
+            // `разметка` когда нужен кусок html 
+            // "разметка" для строки html
+            // ИСпользование компонента продукт лист в ап компоненте 
             AppComponent = (function () {
                 function AppComponent() {
                     this.pageTitle = 'Acme Product Managment';
@@ -27,7 +33,8 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'pm-app',
-                        template: "<div><h1>{{pageTitle}}</h1>\n   <div>My First Component</div>\n   </div>\n   "
+                        template: "<div><h1>{{pageTitle}}</h1>\n       <pm-products></pm-products>\n   </div>\n   ",
+                        directives: [product_list_component_1.ProductListComponent]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
