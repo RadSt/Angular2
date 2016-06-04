@@ -1,5 +1,6 @@
 // OnInit Angular lifecycle interface
 import { Component, OnInit } from 'angular2/core';
+import { ROUTER_DIRECTIVES } from 'angular2/router'
 import { IProduct } from './product';
 import { ProductFilterPipe } from './product-filter.pipe';
 import { StarComponent } from '../shared/star.component';
@@ -7,17 +8,17 @@ import { ProductService } from './product.service';
 // подключение кастом pipe
 
 @Component({
-    selector: 'pm-products',
     templateUrl: 'app/products/product-list.component.html',
     styleUrls: ['app/products/product-list.component.css'],
     pipes: [ProductFilterPipe],
-    directives: [StarComponent]
+    directives: [StarComponent, ROUTER_DIRECTIVES]
     // Разметка html в файле, если обьем большой
     // styleUrls: подключение уникального стиля для компонента
     //  ['app/products/product-list.component.css',
     //    'app/products/product-list.component.css']
     // pipes: [ProductFilterPipe] подключение кастом pipe
     // directives: [StarComponent] use component as a directive
+    // ROUTER_PROVIDERS required by route angular2 system
 })
 
 // OnInit Angular lifecycle interface

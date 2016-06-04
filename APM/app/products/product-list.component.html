@@ -1,15 +1,14 @@
 <div class="panel panel-primary">
     <div class="panel-heading">
-      <!--{{}}Интерполированная (one-way) связь с переменной из компонента product-list--> 
+        <!--{{}}Интерполированная (one-way) связь с переменной из компонента product-list-->
         {{pageTitle}}
     </div>
     <div class="panel-body">
         <div class="row">
             <div class="col-md-2">Filter by: </div>
             <div class="col-md-4">
-                <!--[(ngModel)] = "параметр" (two-way) binding для фильтрации --> 
-                <input type="text"
-                [(ngModel)] = "listFilter"/>
+                <!--[(ngModel)] = "параметр" (two-way) binding для фильтрации -->
+                <input type="text" [(ngModel)]="listFilter" />
             </div>
         </div>
         <div class="row">
@@ -18,50 +17,52 @@
             </div>
         </div>
         <div class="table-responsive">
-            <!--*ngIf="" отображает эл. вместе с дочерними только в том случае если условие true--> 
+            <!--*ngIf="" отображает эл. вместе с дочерними только в том случае если условие true-->
             <table class="table" *ngIf="products && products.length">
                 <thead>
-                <tr>
-                    <th>
-                        <!-- ()="Метотод()" Event Binding для биндинга событий элемента-->
-                        <button class="btn btn-primary" (click)="toggleImage()">
+                    <tr>
+                        <th>
+                            <!-- ()="Метотод()" Event Binding для биндинга событий элемента-->
+                            <button class="btn btn-primary" (click)="toggleImage()">
                             <!--{{showImage ? "Hide" : "Show"}} Текст кнопки в зависимости
                             от значения переменной-->
                             {{showImage ? "Hide" : "Show"}} Image
                         </button>
-                    </th>
-                    <th>Product</th>
-                    <th>Code</th>
-                    <th>Avialable</th>
-                    <th>Price</th>
-                    <th>5 star Rating</th>
-                </tr>    
+                        </th>
+                        <th>Product</th>
+                        <th>Code</th>
+                        <th>Avialable</th>
+                        <th>Price</th>
+                        <th>5 star Rating</th>
+                    </tr>
                 </thead>
-                <tbody> 
-                    <!--*ngFor="" цикл для типа products с помощью лок. перем. #product--> 
-                    <!-- Подключение Pipe Фильтра | productFilter:listFilter --> 
+                <tbody>
+                    <!--*ngFor="" цикл для типа products с помощью лок. перем. #product-->
+                    <!-- Подключение Pipe Фильтра | productFilter:listFilter -->
                     <tr *ngFor="#product of products | productFilter:listFilter">
                         <td>
-                             <!--[]="переменная со знач." Binding для свойств сss элемента--> 
-                             <!--*ngIf="showImage" используется для отображения или скрытия элементов-->
-                            <img *ngIf="showImage"
-                            [src]="product.imageUrl" [title]="product.productName"
-                            [style.width.px]="imageWidth" [style.margin.px]="imageMargin">
+                            <!--[]="переменная со знач." Binding для свойств сss элемента-->
+                            <!--*ngIf="showImage" используется для отображения или скрытия элементов-->
+                            <img *ngIf="showImage" [src]="product.imageUrl" [title]="product.productName" [style.width.px]="imageWidth" [style.margin.px]="imageMargin">
                         </td>
-                        <td>{{ product.productName }}</td>
-                        <!--|lowercase Исп-ие pipes для задания формата значения--> 
+                        <td>
+                            <a [routerLink]="['Product Detail', {id: product.productId}]">
+                                <!--[routeLink]="['ProductDetail', {id: product.productId}]" передача ссылки на маршрут с параметром-->
+                                {{ product.productName }}
+                            </a>
+                        </td>
+                        <!--|lowercase Исп-ие pipes для задания формата значения-->
                         <td>{{ product.productCode | lowercase }}</td>
                         <td>{{ product.releaseDate }}</td>
-                         <!--|currency Исп-ие pipes для задания денежного формата значения
-                         'RUS':true:'1.2-2' формат значения--> 
+                        <!--|currency Исп-ие pipes для задания денежного формата значения
+                         'RUS':true:'1.2-2' формат значения-->
                         <td>{{ product.price | currency: 'RUS':true:'1.2-2' }}</td>
                         <td>
-                             <!--(ratingClicked)='onRatingClicked($event)' Привязка события
-                             к элементу--> 
-                            <ai-star [rating]='product.starRating'
-                            (ratingClicked)='onRatingClicked($event)'></ai-star>
-                       </td>
-                    </tr>                 
+                            <!--(ratingClicked)='onRatingClicked($event)' Привязка события
+                             к элементу-->
+                            <ai-star [rating]='product.starRating' (ratingClicked)='onRatingClicked($event)'></ai-star>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
