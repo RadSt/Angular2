@@ -1,4 +1,4 @@
-import { Component, OnChanges, Input, 
+import { Component, OnChanges, Input,
     Output, EventEmitter } from 'angular2/core'
 
 // Общий компонент для звезд в списке.
@@ -9,19 +9,19 @@ import { Component, OnChanges, Input,
 })
 // Наследуется от интерфейса OnChanges 
 // метод ngOnChanges() будет запускаться при изменении данных
-export class StarComponent implements OnChanges{
+export class StarComponent implements OnChanges {
     // метод декоратор принимающий значение переменной при запуске из html 
     @Input() rating: number;
     starWidth: number;
     // метод декоратор создающий событие в html
     @Output() ratingClicked: EventEmitter<string> =
-     new EventEmitter<string>();
+    new EventEmitter<string>();
     // событие вызывается при изменении
-    ngOnChanges(): void{
+    ngOnChanges(): void {
         this.starWidth = this.rating * 86 / 5;
-    }  
+    }
     // Создание метода при запуске события  
-    onClick(){
-        this.ratingClicked.emit(` The rating ${ this.rating } was clicked! `);
+    onClick() {
+        this.ratingClicked.emit(` The rating ${this.rating} was clicked! `);
     }
 }

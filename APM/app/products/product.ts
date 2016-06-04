@@ -1,5 +1,5 @@
 // Interface for products array
-export interface IProduct{
+export interface IProduct {
     productId: number;
     productName: string;
     productCode: string;
@@ -20,9 +20,9 @@ export interface IProduct{
  //   public description: string,
  //   public starRating: number,
  //   public imageUrl: string){
-        
+
  //   }
-    
+
  //   calculateDiscount(percent: number): number{
  //       return this.price - (this.price * percent / 100);
  //   }
