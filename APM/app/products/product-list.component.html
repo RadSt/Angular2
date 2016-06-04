@@ -55,7 +55,12 @@
                          <!--|currency Исп-ие pipes для задания денежного формата значения
                          'RUS':true:'1.2-2' формат значения--> 
                         <td>{{ product.price | currency: 'RUS':true:'1.2-2' }}</td>
-                        <td>{{ product.starRating }}</td>
+                        <td>
+                             <!--(ratingClicked)='onRatingClicked($event)' Привязка события
+                             к элементу--> 
+                            <ai-star [rating]='product.starRating'
+                            (ratingClicked)='onRatingClicked($event)'></ai-star>
+                       </td>
                     </tr>                 
                 </tbody>
             </table>

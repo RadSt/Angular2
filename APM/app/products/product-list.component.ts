@@ -1,19 +1,22 @@
 // OnInit Angular lifecycle interface
 import { Component, OnInit } from 'angular2/core';
-import { IProduct } from './product'
-import { ProductFilterPipe } from './product-filter.pipe'
+import { IProduct } from './product';
+import { ProductFilterPipe } from './product-filter.pipe';
+import { StarComponent } from '../shared/star.component';
 // подключение кастом pipe
 
 @Component({
     selector: 'pm-products',
     templateUrl: 'app/products/product-list.component.html',
     styleUrls: ['app/products/product-list.component.css'],
-    pipes: [ProductFilterPipe]
+    pipes: [ProductFilterPipe],
+    directives: [StarComponent]
     // Разметка html в файле, если обьем большой
     // styleUrls: подключение уникального стиля для компонента
     //  ['app/products/product-list.component.css',
     //    'app/products/product-list.component.css']
     // pipes: [ProductFilterPipe] подключение кастом pipe
+    // directives: [StarComponent] use component as a directive
 })
 
 // OnInit Angular lifecycle interface
@@ -87,6 +90,10 @@ export class ProductListComponent implements OnInit{
   
   ngOnInit(): void{
       console.log('In OnInit');
+  }
+  
+  onRatingClicked(message: string): void{
+      this.pageTitle = 'Product List' + message;
   }
   
 }

@@ -1,6 +1,8 @@
 <div class="crop" 
     [style.width.px]="starWidth"
-    [title]="rating">
+    [title]="rating"
+    (click)='onClick()'>
+    <!--(click)='onClick()' подписка на событие click эл-та-->
     <div style="width: 86px">
         <span class="glyphicon glyphicon-star"></span>
         <span class="glyphicon glyphicon-star"></span>
