@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', './product-filter.pipe'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,14 +10,18 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, product_filter_pipe_1;
     var ProductListComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (product_filter_pipe_1_1) {
+                product_filter_pipe_1 = product_filter_pipe_1_1;
             }],
         execute: function() {
+            // подключение кастом pipe
             ProductListComponent = (function () {
                 function ProductListComponent() {
                     // связь с переменной в product-list.component.html
@@ -29,7 +33,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     this.showImage = false;
                     // Параметр (two-way) binding для фильтрации
                     this.listFilter = 'cart';
-                    // Array dynamic with products
+                    // Array with products implement IProduct interface
                     this.products = [
                         {
                             "productId": 1,
@@ -87,10 +91,15 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 ProductListComponent.prototype.toggleImage = function () {
                     this.showImage = !this.showImage;
                 };
+                ProductListComponent.prototype.ngOnInit = function () {
+                    console.log('In OnInit');
+                };
                 ProductListComponent = __decorate([
                     core_1.Component({
                         selector: 'pm-products',
-                        templateUrl: 'app/products/product-list.component.html'
+                        templateUrl: 'app/products/product-list.component.html',
+                        styleUrls: ['app/products/product-list.component.css'],
+                        pipes: [product_filter_pipe_1.ProductFilterPipe]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], ProductListComponent);

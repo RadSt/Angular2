@@ -39,7 +39,8 @@
                 </thead>
                 <tbody> 
                     <!--*ngFor="" цикл для типа products с помощью лок. перем. #product--> 
-                    <tr *ngFor="#product of products">
+                    <!-- Подключение Pipe Фильтра | productFilter:listFilter --> 
+                    <tr *ngFor="#product of products | productFilter:listFilter">
                         <td>
                              <!--[]="переменная со знач." Binding для свойств сss элемента--> 
                              <!--*ngIf="showImage" используется для отображения или скрытия элементов-->

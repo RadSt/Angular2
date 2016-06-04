@@ -1,12 +1,23 @@
-import { Component } from 'angular2/core';
+// OnInit Angular lifecycle interface
+import { Component, OnInit } from 'angular2/core';
+import { IProduct } from './product'
+import { ProductFilterPipe } from './product-filter.pipe'
+// подключение кастом pipe
 
 @Component({
     selector: 'pm-products',
-    templateUrl: 'app/products/product-list.component.html'
+    templateUrl: 'app/products/product-list.component.html',
+    styleUrls: ['app/products/product-list.component.css'],
+    pipes: [ProductFilterPipe]
     // Разметка html в файле, если обьем большой
+    // styleUrls: подключение уникального стиля для компонента
+    //  ['app/products/product-list.component.css',
+    //    'app/products/product-list.component.css']
+    // pipes: [ProductFilterPipe] подключение кастом pipe
 })
 
-export class ProductListComponent{
+// OnInit Angular lifecycle interface
+export class ProductListComponent implements OnInit{
     // связь с переменной в product-list.component.html
    pageTitle: string = 'Product List';
    // переменные свойств сss элемента
@@ -16,8 +27,8 @@ export class ProductListComponent{
    showImage: boolean = false;
    // Параметр (two-way) binding для фильтрации
    listFilter: string = 'cart';
-   // Array dynamic with products
-   products: any[] = [
+   // Array with products implement IProduct interface
+   products: IProduct[] = [
     {
         "productId": 1,
         "productName": "Leaf Rake",
@@ -73,4 +84,9 @@ export class ProductListComponent{
   toggleImage(): void{
       this.showImage = !this.showImage;
   }
+  
+  ngOnInit(): void{
+      console.log('In OnInit');
+  }
+  
 }
