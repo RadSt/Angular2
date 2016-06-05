@@ -1,15 +1,17 @@
 {
+  // Specify tipescript configuration
   "compilerOptions": {
-    "target": "es5",
+    "target": "es5", // compiled version 
     "module": "system",
     "moduleResolution": "node",
-    "sourceMap": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
+    "sourceMap": true, // typesqript should generate map files
+    "emitDecoratorMetadata": true, // this
+    "experimentalDecorators": true,// provide support to our decorators
     "removeComments": false,
-    "noImplicitAny": false
+    "noImplicitAny": false // all our variables can be strong typed or we can use any as type
   },
-  "exclude": [
+  "exclude": [ 
+    // typesqript not to compiled specify files or folders
     "node_modules",
     "typings/main",
     "typings/main.d.ts"

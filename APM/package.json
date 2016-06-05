@@ -1,9 +1,11 @@
 {
+    // Package manager for install library and run sqripts
     "name": "product-management",
     "version": "1.0.0",
     "author": "Deborah Kurata",
     "description": "Package for the Acme Product Management sample application",
     "scripts": {
+        // the list of sqripts that we can run in npm
         "start": "concurrently \"npm run tsc:w\" \"npm run lite\" ",
         "tsc": "tsc",
         "tsc:w": "tsc -w",
@@ -13,6 +15,7 @@
     },
     "license": "ISC",
     "dependencies": {
+        // define the libraries that application needs to run
         "angular2": "2.0.0-beta.15",
         "systemjs": "0.19.26",
         "es6-shim": "^0.35.0",
@@ -22,6 +25,8 @@
         "bootstrap": "^3.3.6"
     },
     "devDependencies": {
+        // define the additional libraries we need to development
+        // and supports lybraries that the sqripts use
         "concurrently": "^2.0.0",
         "lite-server": "^2.2.0",
         "typescript": "^1.8.10",
