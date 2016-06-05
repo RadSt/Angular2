@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './product.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1;
+    var core_1, router_1, product_service_1;
     var ProductDetailComponent;
     return {
         setters:[
@@ -19,6 +19,9 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (product_service_1_1) {
+                product_service_1 = product_service_1_1;
             }],
         execute: function() {
             // не вложенный компонент без селектора будет добавлен в приложение через роутинг
@@ -26,21 +29,25 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
             ProductDetailComponent = (function () {
                 // Конструктор который принимает параметры в переменную private _routeParams
                 // Получаем параметр по id `: ${id}`
-                function ProductDetailComponent(_routeParams, _router) {
-                    this._routeParams = _routeParams;
+                function ProductDetailComponent(_router, _productService) {
                     this._router = _router;
+                    this._productService = _productService;
                     this.pageTitle = 'Product detail';
-                    var id = +this._routeParams.get('id');
-                    this.pageTitle += ": " + id;
                 }
                 ProductDetailComponent.prototype.onBack = function () {
                     this._router.navigate(['Products']);
+                };
+                // this._router.navigate(['Products']); Переход через код
+                ProductDetailComponent.prototype.ngOnInit = function () {
+                    var _this = this;
+                    this._productService.getProductsById(this.id)
+                        .subscribe(function (products) { return _this.product = products; }, function (error) { return _this.errorMessage = error; });
                 };
                 ProductDetailComponent = __decorate([
                     core_1.Component({
                         templateUrl: 'app/products/product-detail.component.html'
                     }), 
-                    __metadata('design:paramtypes', [router_1.RouteParams, router_1.Router])
+                    __metadata('design:paramtypes', [router_1.Router, product_service_1.ProductService])
                 ], ProductDetailComponent);
                 return ProductDetailComponent;
             }());
